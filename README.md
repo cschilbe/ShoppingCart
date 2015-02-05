@@ -5,15 +5,15 @@ This is a code sample for a checkout problem where items need to have an associa
 and may have discounts applied based on quantity.
 
 ## Usage
-You may execute the runner with a filename such as test\_data.txt or by entering items on the command line
+You may execute the runner with a filename such as test_data.txt or by entering items on the command line
 ```
-$ ruby checkout\_runner.rb test\_data.txt
+$ ruby checkout_runner.rb test_data.txt
 ```
 ```
-$ ruby checkout\_runner.rb
+$ ruby checkout_runner.rb
 ```
 
-To run the unit tests, `$ ruby checkout\_tests.rb`
+To run the unit tests, `$ ruby checkout_tests.rb`
 
 ## Requirements
 - Items must be priced individually
