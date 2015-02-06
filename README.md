@@ -37,4 +37,3 @@ This solution could be extended to build rules from external sources such as YAM
 - Floats are used for money which is bad but ok for demonstration
 - Price rules could be further abstracted to common classes for quantity discount rules, per item price rules, etc. 
 and built up instead of requiring essentially the same type of block for each.
-- Classes are all in one file for simplicity

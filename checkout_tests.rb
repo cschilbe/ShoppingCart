@@ -1,5 +1,7 @@
+$:.unshift File.dirname(__FILE__)
+
 require "test/unit"
-require_relative "Transaction"
+require "lib/Transaction"
 
 class CheckoutTests < Test::Unit::TestCase
   def setup

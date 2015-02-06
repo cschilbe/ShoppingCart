@@ -6,6 +6,9 @@ class Transaction
 
   attr_reader :price_rules, :items, :total
 
+  # Initialize transaction with options hash.
+  # - formatter: Formatter object to use to aggrigate line items. Default is a new Formatter.
+  # - price_rules: Array of PriceRule objects. Defaults to empty array.
   def initialize(ops = {})
     @formatter = ops[:formatter] || Formatter.new
     @price_rules = ops[:price_rules] || []
@@ -13,10 +16,12 @@ class Transaction
     @items = Hash.new(0)
   end
 
+  # Add item by name to the collection of items. Increments the quantity count.
   def add_item(name)
     @items[name] += 1
   end
 
+  # Apply price rules to each item. Add each calculated line item and total to formatter.
   def checkout
     @items.each do |name,qty|
       item_total = 0
@@ -34,6 +39,7 @@ class Transaction
 
   private 
 
+  # Apply all price rules to the item. Yield the calculated price to calling block.
   def apply_price_rules name,quantity
     @price_rules.each do |rule|
       yield rule.calculate(quantity) if rule.applicable?(name)
