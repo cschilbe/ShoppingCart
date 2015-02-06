@@ -1,6 +1,6 @@
-require_relative "PriceRule"
-require_relative "Formatter"
-require_relative "Checkout"
+require_relative "pricerule"
+require_relative "formatter"
+require_relative "checkout"
 
 class Transaction
 
