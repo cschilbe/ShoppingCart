@@ -1,5 +1,4 @@
-require_relative "Checkout"
-include Checkout
+require_relative "Transaction"
 
 # Create the rules. This could be done from an external source or DSL.
 # A price rule is a block that applies a price to a list of items.

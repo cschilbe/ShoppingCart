@@ -1,6 +1,5 @@
 require "test/unit"
-require_relative "Checkout"
-include Checkout
+require_relative "Transaction"
 
 class CheckoutTests < Test::Unit::TestCase
   def setup
