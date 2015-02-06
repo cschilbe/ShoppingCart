@@ -14,6 +14,10 @@ class Formatter
 
   # Format positive and negative (discount) line items
   def line_item(name,qty,price)
+
+    # ignore lines of no value
+    return if price === 0
+
     if (price < 0)
       output << "(Discount)\t\t-#{Checkout.money_format(-price)}\n"
     else

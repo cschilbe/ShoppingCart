@@ -18,6 +18,9 @@ class Transaction
 
   # Add item by name to the collection of items. Increments the quantity count.
   def add_item(name)
+    if (!any_rules?(name))
+      warn("#{name} did not match any price rules - I guess it is free...")
+    end
     @items[name] += 1
   end
 
@@ -37,6 +40,12 @@ class Transaction
     @formatter.total(@total)
   end
 
+  # Determine if an item has any associated price rules
+  # This could be used to validate when adding an item or when checking out.
+  def any_rules? name
+    return @price_rules.any? {|rule| rule.applicable?(name)}
+  end
+
   private 
 
   # Apply all price rules to the item. Yield the calculated price to calling block.
@@ -45,5 +54,6 @@ class Transaction
       yield rule.calculate(quantity) if rule.applicable?(name)
     end
   end
+
 end
 

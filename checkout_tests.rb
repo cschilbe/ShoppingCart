@@ -78,6 +78,21 @@ class CheckoutTests < Test::Unit::TestCase
     line_item = f.line_item(name,quantity,price)
     assert_match("-$10.00",line_item)
   end
+
+  def test_formatter_ignores_lines_with_no_value
+    # This accounts for discounts evaluated but do not apply any amount.
+    f = Formatter.new
+    f.line_item("Test",2,0)
+    assert_equal("",f.output)
+  end
+
+  def test_transaction_any_rules_returns_true_when_any_rule_applies
+    assert(@transaction.any_rules?("Apple"))
+  end
+
+  def test_transaction_any_rules_returns_false_when_nothing_applies
+    assert(false === @transaction.any_rules?("Melon"))
+  end
 end
 
 class NullFormatter
